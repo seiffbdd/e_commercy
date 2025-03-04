@@ -1,11 +1,13 @@
 import 'package:e_commercy/core/utils/app_colors.dart';
 import 'package:e_commercy/core/utils/app_router.dart';
+import 'package:e_commercy/core/utils/cache_helper.dart';
 import 'package:e_commercy/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const ECommercy());
 }
@@ -20,8 +22,11 @@ class ECommercy extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: AppColors.whiteColor,
-        appBarTheme: const AppBarTheme(backgroundColor: AppColors.blueColor),
+        scaffoldBackgroundColor: AppColors.kPrimaryBackgroundColor,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.whiteColor,
+          centerTitle: true,
+        ),
       ),
     );
   }

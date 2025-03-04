@@ -1,9 +1,13 @@
 import 'package:e_commercy/core/utils/app_colors.dart';
+import 'package:e_commercy/core/utils/app_router.dart';
 import 'package:e_commercy/core/utils/assets_data.dart';
+import 'package:e_commercy/core/utils/constants.dart';
 import 'package:e_commercy/core/utils/screen_size.dart';
 import 'package:e_commercy/core/utils/styles.dart';
+import 'package:e_commercy/features/splash/presentation/views/widgets/already_have_an_account_row.dart';
 import 'package:e_commercy/features/splash/presentation/views/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -30,28 +34,14 @@ class SplashView extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const Spacer(flex: 2),
-              RoundedButton(text: 'Get Started', onPressed: () {}),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Already have an account? ',
-                    style: Styles.textStyle16.copyWith(
-                      color: AppColors.whiteColor,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Login',
-                      style: Styles.textStyle16.copyWith(
-                        color: AppColors.greenColor,
-                      ),
-                    ),
-                  ),
-                ],
+              RoundedButton(
+                text: 'Get Started',
+                onPressed: () {
+                  GoRouter.of(context).pushReplacement(AppRouter.kRegisterView);
+                },
               ),
+              sizedBoxHeight20,
+              AlreayHaveAnAccountRow(),
               const Spacer(),
             ],
           ),
