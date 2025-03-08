@@ -32,7 +32,7 @@ class AuthButton extends StatelessWidget {
       disabledColor: buttonColor,
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       onPressed: onPressed,
-
+      color: buttonColor,
       child:
           child ??
           Text(

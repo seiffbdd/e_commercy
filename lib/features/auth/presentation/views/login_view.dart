@@ -102,7 +102,7 @@ class _RegisterViewState extends State<LoginView> {
                   ],
                 ),
                 sizedBoxHeight10,
-                AuthButton(text: 'Sign In'),
+                AuthButton(text: 'Sign In', onPressed: () {}),
                 sizedBoxHeight20,
                 Row(
                   children: [
