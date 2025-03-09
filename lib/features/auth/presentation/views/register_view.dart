@@ -1,4 +1,5 @@
 import 'package:e_commercy/core/utils/app_colors.dart';
+import 'package:e_commercy/core/utils/app_router.dart';
 import 'package:e_commercy/core/utils/assets_data.dart';
 import 'package:e_commercy/core/utils/constants.dart';
 import 'package:e_commercy/core/utils/screen_size.dart';
@@ -68,7 +69,7 @@ class _RegisterViewState extends State<RegisterView> {
         body: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+              padding: EdgeInsets.all(16.0),
               child: SingleChildScrollView(
                 child: Form(
                   key: _formKey,
@@ -126,11 +127,16 @@ class _RegisterViewState extends State<RegisterView> {
                       sizedBoxHeight30,
                       AuthButton(
                         onPressed: () {
+                          // if (_formKey.currentState!.validate()) {
+                          //   authCubit.signup(
+                          //     name: _nameController.text,
+                          //     email: _emailController.text,
+                          //     password: _passwordController.text,
+                          //   );
+                          // }
                           if (_formKey.currentState!.validate()) {
-                            authCubit.signup(
-                              name: _nameController.text,
-                              email: _emailController.text,
-                              password: _passwordController.text,
+                            GoRouter.of(context).push(
+                              '${AppRouter.kVerifyEmailView}/${_emailController.text}',
                             );
                           }
                         },
