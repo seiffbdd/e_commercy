@@ -35,6 +35,7 @@ class _RegisterViewState extends State<RegisterView> {
     _passwordController = TextEditingController();
     _confirmPasswordController = TextEditingController();
     _formKey = GlobalKey<FormState>();
+    context.read<AuthCubit>().obscureText = true;
   }
 
   @override
@@ -101,12 +102,32 @@ class _RegisterViewState extends State<RegisterView> {
                         keyboardType: TextInputType.emailAddress,
                       ),
                       sizedBoxHeight20,
-                      CustomTextFormField(
-                        labelText: 'Password',
-                        hintText: 'Create a password',
-                        prefixIcon: Icon(Icons.lock),
-                        controller: _passwordController,
-                        obscureText: true,
+                      BlocBuilder<AuthCubit, AuthState>(
+                        builder: (context, state) {
+                          return CustomTextFormField(
+                            contentPadding: EdgeInsets.fromLTRB(
+                              12,
+                              8.0,
+                              12,
+                              8.0,
+                            ),
+                            labelText: 'Password',
+                            hintText: 'Create a password',
+                            prefixIcon: Icon(Icons.lock),
+                            controller: _passwordController,
+                            obscureText: authCubit.obscureText,
+                            suffix: IconButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () {
+                                authCubit.toggleobsecureText();
+                              },
+                              icon:
+                                  authCubit.obscureText
+                                      ? Icon(Icons.remove_red_eye)
+                                      : Icon(Icons.remove_red_eye_outlined),
+                            ),
+                          );
+                        },
                       ),
                       sizedBoxHeight20,
                       CustomTextFormField(

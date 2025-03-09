@@ -13,15 +13,20 @@ class CustomTextFormField extends StatelessWidget {
     this.textInputAction = TextInputAction.next,
     this.keyboardType = TextInputType.text,
     this.validator,
+    this.suffix,
+    this.contentPadding,
   });
   final String? labelText;
   final String? hintText;
   final bool obscureText;
   final TextEditingController? controller;
   final Icon? prefixIcon;
+  final Widget? suffix;
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
+  final EdgeInsetsGeometry? contentPadding;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -41,6 +46,7 @@ class CustomTextFormField extends StatelessWidget {
         labelText: labelText,
         hintText: hintText,
         filled: true,
+        contentPadding: contentPadding,
         fillColor: AppColors.whiteColor,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(16.0)),
         enabledBorder: OutlineInputBorder(
@@ -56,7 +62,7 @@ class CustomTextFormField extends StatelessWidget {
           borderSide: BorderSide(color: AppColors.greyColor),
         ),
         prefixIcon: prefixIcon,
-        // iconColor: AppColors.greyColor,
+        suffix: suffix,
       ),
       obscureText: obscureText,
     );

@@ -38,4 +38,10 @@ class AuthCubit extends Cubit<AuthState> {
       emit(RegisterFailed(message: e.toString()));
     }
   }
+
+  bool obscureText = false;
+  void toggleobsecureText() {
+    obscureText = !obscureText;
+    emit(ObsecureTextToggled());
+  }
 }

@@ -14,3 +14,5 @@ final class RegisterFailed extends AuthState {
 
   RegisterFailed({required this.message});
 }
+
+final class ObsecureTextToggled extends AuthState {}
